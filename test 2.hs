@@ -65,9 +65,6 @@ e m = let c = 30000000000
 e2 m = m*c*c
     where c = 30000000000
 
-{-Falten von Listen. Zum Beispiel Listen aufsummieren. Man kann lins oder rechts falten-}
+{-Falten von Listen. Zum Beispiel Listen aufsummieren. Man kann licks oder rechts falten-}
 sum [] = 0
 sum (x:xs) x + sum xs
-
-
-sum2 = foldr (+) 0

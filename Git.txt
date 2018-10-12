@@ -1,0 +1,2 @@
+Distributet Version Control System
+Jeder hat eine lokale Repository = DVCS
