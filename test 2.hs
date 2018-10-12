@@ -55,7 +55,7 @@ add5 xs = map (5+) xs
 
 
 {-Variablen, globale Variablen usw.-}
-pi_new= 3.14159
+pi_new = 3.14159
 umfang r = 2*pi_new*r
 
 
@@ -66,14 +66,51 @@ e2 m = m*c*c
     where c = 30000000000
 
 {-Falten von Listen. Zum Beispiel Listen aufsummieren. Man kann licks oder rechts falten-}
-sum [] = 0
-sum (x:xs) x + sum xs
+sum5 [] = 0
+sum5 (x:xs) = x + sum5 xs
 
 sum2 = foldr (+) 0
 sum3 = foldl (+) 0
 
 sum4 = foldl (*) 1
-lenght5 = xs = foldr (+) 0 (map (\x ->) xs)
+lenght5 xs = foldr (+) 0 (map (\x -> 1) xs)
+lenght6 xs = foldr (\x n -> n+1) 0 xs
 
-zipWith2 f [] [] = []
+zipWith2 f [] [] = []
 zipWith2 f (x:xs) (y:ys) = f x y : zipWith2 f xs ys
+
+hamingDistanz xs ys = (zipWith unterschied xs ys)
+                      where unterschied x y = if (x == y) then 0 else 1
+{-Unendliche Listen-}
+{-Primzahlen-}
+primes (x:xs) = x:primes[y | y <- xs, mod y x/= 0]
+
+
+{-Datentypen-}
+type Person = (String, String, Integer)
+
+Du :: Person
+Du = ("Vorname", "Nachname", 42)
+
+{-Richtige Datentypen-}
+data Person1 = Mensch String String Integer
+{-Konstruktor-}
+Person1 :: String -> String -> Integer -> Person1
+volljaerhrig :: Person1 -> Bool
+volljaerhrig (Mensch vorname name alter) = alter >= 18
+
+{-Enums-}
+data schwierigkeit = Schwer | Leicht
+data vorlesungsname = Mathe | Programmieren
+vorlesung :: vorlesungsname -> schwierigkeit
+vorlesung Mathe = Schwer
+vorlesung Programmieren = Leicht
+
+data Geometrie = Kreis Double | Rechteck Double Double | Quadrat Double
+einheitskreis :: Geometrie
+einheitskreis = Kreis 1.0
+
+area :: Geometrie -> Double
+area (Kreis r) = pi * r*r
+area (Rechteck a b) = a * b
+area (Quadrat a) = a*a
