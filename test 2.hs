@@ -68,3 +68,12 @@ e2 m = m*c*c
 {-Falten von Listen. Zum Beispiel Listen aufsummieren. Man kann licks oder rechts falten-}
 sum [] = 0
 sum (x:xs) x + sum xs
+
+sum2 = foldr (+) 0
+sum3 = foldl (+) 0
+
+sum4 = foldl (*) 1
+lenght5 = xs = foldr (+) 0 (map (\x ->) xs)
+
+zipWith2 f [] [] = []
+zipWith2 f (x:xs) (y:ys) = f x y : zipWith2 f xs ys
